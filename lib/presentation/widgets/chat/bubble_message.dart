@@ -1,24 +1,22 @@
 import 'package:flutter/material.dart';
 
 class MessageBubble extends StatelessWidget {
-  const MessageBubble({super.key});
+  final CrossAxisAlignment alignment;
+  final Widget message;
+  const MessageBubble(
+      {super.key, required this.alignment, required this.message});
 
   @override
   Widget build(BuildContext context) {
+    final colors = Theme.of(context);
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.end,
+      crossAxisAlignment: alignment,
       children: [
         Container(
           decoration: BoxDecoration(
-              color: Colors.black,
+              color: colors.primaryColor,
               borderRadius: BorderRadius.all(Radius.circular(20))),
-          child: Padding(
-            padding: EdgeInsets.all(12),
-            child: Text(
-              'lorem impsumt',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
+          child: Padding(padding: EdgeInsets.all(12), child: message),
         ),
         SizedBox(height: 10)
       ],
