@@ -39,12 +39,19 @@ class _ChatView extends StatelessWidget {
               return (index % 2 == 0)
                   ? MessageBubble(
                       alignment: CrossAxisAlignment.start,
-                      message: Image(
-                        height: 300,
+                      message: Image.network(
+                        'https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?resize=476%2C280&ssl=1',
                         width: 300,
+                        height: 300,
                         fit: BoxFit.cover,
-                        image: NetworkImage(
-                            'https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?resize=476%2C280&ssl=1'),
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Container(
+                            width: 300,
+                            height: 300,
+                            child: Text('cargando'),
+                          );
+                        },
                       ),
                     )
                   : MessageBubble(
