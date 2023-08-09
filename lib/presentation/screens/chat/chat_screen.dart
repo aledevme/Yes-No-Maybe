@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yes_no_maybe_app/presentation/widgets/chat/bubble_message.dart';
+import 'package:yes_no_maybe_app/presentation/widgets/chat/her_message.dart';
 import 'package:yes_no_maybe_app/presentation/widgets/shared/message_field_box.dart';
 
 class ChatScreen extends StatelessWidget {
@@ -38,23 +39,7 @@ class _ChatView extends StatelessWidget {
           Expanded(child: ListView.builder(
             itemBuilder: (context, index) {
               return (index % 2 == 0)
-                  ? MessageBubble(
-                      alignment: CrossAxisAlignment.start,
-                      message: Image.network(
-                        'https://i0.wp.com/www.printmag.com/wp-content/uploads/2021/02/4cbe8d_f1ed2800a49649848102c68fc5a66e53mv2.gif?resize=476%2C280&ssl=1',
-                        width: 300,
-                        height: 300,
-                        fit: BoxFit.cover,
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) return child;
-                          return Container(
-                            width: 300,
-                            height: 300,
-                            child: Text('cargando'),
-                          );
-                        },
-                      ),
-                    )
+                  ? HerMessageBubble()
                   : MessageBubble(
                       alignment: CrossAxisAlignment.end,
                       message: Text(
